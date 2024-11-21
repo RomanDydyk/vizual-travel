@@ -40,7 +40,7 @@ export const Trip = () => {
   const location = useLocation();
   const queryParams = new URLSearchParams(location.search);
   const tripTitle = queryParams.get("title");
-  const { setTripTitle, addPoint } = useTripStore();
+  const { setTripTitle, addPoint, points, editPoint } = useTripStore();
   const [startPoint, setStartPoint] = React.useState("");
   const [selectedType, setSelectedType] = React.useState<
     | {
@@ -68,12 +68,39 @@ export const Trip = () => {
     }
   }, [tripTitle]);
 
+  useEffect(() => {
+    const pointToEdit = localStorage.getItem("editPoint");
+    if (pointToEdit) {
+      const point = JSON.parse(pointToEdit);
+      const pointId = point.id;
+
+      const pointIndex = points.findIndex((point) => point.id === pointId);
+      if (pointIndex !== -1) {
+        const point = points[pointIndex];
+        setStartPoint(point.point);
+      }
+    }
+  }, []);
+
   const handleAddPoint = () => {
     if (startPoint && selectedType) {
-      addPoint({
-        point: startPoint,
-        type: selectedType,
-      });
+      const editPointItem = localStorage.getItem("editPoint");
+      if (editPointItem) {
+        const point = JSON.parse(editPointItem);
+        const pointId = point.id;
+        editPoint(pointId, {
+          point: startPoint,
+          type: selectedType,
+          id: pointId,
+        });
+      } else {
+        addPoint({
+          point: startPoint,
+          type: selectedType,
+        });
+      }
+
+      localStorage.removeItem("editPoint");
       navigate("/trip-overview");
     }
   };

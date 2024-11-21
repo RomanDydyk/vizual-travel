@@ -1,6 +1,6 @@
 import React from "react";
 import Button from "../../components/global/button/button";
-import { Box, Typography } from "@mui/material";
+import { Box } from "@mui/material";
 import { CustomModal } from "../../components/global/modal/modal";
 import { Input } from "../../components/global/input/input";
 import CustomTypography from "../../components/global/typography/typography";

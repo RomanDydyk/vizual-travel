@@ -8,15 +8,19 @@ import {
 } from "@mui/material";
 import AddIcon from "@mui/icons-material/Add";
 import HomeLayout from "../../layouts/homeLayout/homeLayout";
-import { useTripStore } from "../../store/tripStore";
+import { Point, useTripStore } from "../../store/tripStore";
 import CustomTypography from "../../components/global/typography/typography";
 import Button from "../../components/global/button/button";
 import { useNavigate } from "react-router-dom";
 
 export const TripOverview = () => {
   const navigate = useNavigate();
-  const { points, tripTitle, addPoint } = useTripStore();
+  const { points, tripTitle } = useTripStore();
   const handleAddPoint = () => {
+    navigate(`/trip?title=${encodeURIComponent(tripTitle)}`);
+  };
+  const edit = (item: Point) => {
+    localStorage.setItem("editPoint", JSON.stringify(item));
     navigate(`/trip?title=${encodeURIComponent(tripTitle)}`);
   };
   return (
@@ -111,7 +115,13 @@ export const TripOverview = () => {
                 </Box>
               </Box>
             </Box>
-            <Button variant="primary" onClick={() => {}} text="Edit" />
+            <Button
+              variant="primary"
+              onClick={() => {
+                edit(point);
+              }}
+              text="Edit"
+            />
           </ListItem>
         ))}
       </List>
