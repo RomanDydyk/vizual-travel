@@ -17,9 +17,14 @@ const fetchLocations = async (query) => {
   const endpoint = `https://api.geoapify.com/v1/geocode/autocomplete?text=${query}&apiKey=${API_KEY}`;
 
   try {
+    const places: string[] = [];
     const response = await fetch(endpoint);
     const data = await response.json();
-    return data.features.map((feature) => feature.properties.formatted);
+    data.features.forEach((feature) =>
+      places.push(feature.properties.formatted)
+    );
+
+    return places;
   } catch (error) {
     console.error("Error fetching locations:", error);
     return [];
@@ -86,10 +91,6 @@ export const Trip = () => {
       setLocations([]);
     }
   };
-
-  useEffect(() => {
-    console.log(locations);
-  }, [locations]);
 
   useEffect(() => {
     if (tripTitle) {
