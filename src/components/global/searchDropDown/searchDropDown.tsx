@@ -16,16 +16,19 @@ interface SearchDropdownProps {
   items: string[];
   placeholder?: string;
   onSelect: (item: string) => void;
+  onSearch?: (search: string) => void;
 }
 
 export const SearchDropdown: React.FC<SearchDropdownProps> = ({
   items,
   placeholder = "Search...",
   onSelect,
+  onSearch,
 }) => {
   const [search, setSearch] = useState("");
   const [isOpen, setIsOpen] = useState(true);
-
+  const [debounceTimeoutId, setDebounceTimeoutId] =
+    useState<NodeJS.Timeout | null>(null);
   const filteredItems = items.filter((item) =>
     item.toLowerCase().includes(search.toLowerCase())
   );
@@ -44,6 +47,31 @@ export const SearchDropdown: React.FC<SearchDropdownProps> = ({
     setIsOpen(false);
   };
 
+  const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const newSearch = e.target.value;
+    setSearch(newSearch);
+
+    if (onSearch) {
+      if (debounceTimeoutId) {
+        clearTimeout(debounceTimeoutId);
+      }
+
+      const timeoutId = setTimeout(() => {
+        onSearch(newSearch);
+      }, 1000);
+
+      setDebounceTimeoutId(timeoutId);
+    }
+  };
+
+  React.useEffect(() => {
+    return () => {
+      if (debounceTimeoutId) {
+        clearTimeout(debounceTimeoutId);
+      }
+    };
+  }, [debounceTimeoutId]);
+
   return (
     <Box sx={{ position: "relative", width: "300px", margin: "0 auto" }}>
       <TextField
@@ -51,7 +79,7 @@ export const SearchDropdown: React.FC<SearchDropdownProps> = ({
         variant="outlined"
         fullWidth
         value={search}
-        onChange={(e) => setSearch(e.target.value)}
+        onChange={handleSearchChange}
         onFocus={handleOpen}
         InputProps={{
           startAdornment: (

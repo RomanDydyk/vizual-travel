@@ -110,7 +110,7 @@ export const TripOverview = () => {
                     10:00 AM
                   </Typography>
                   <Typography variant="body2" color="gray">
-                    Start Point
+                    {index === 0 ? "Start Point" : "Next Point"}
                   </Typography>
                 </Box>
               </Box>

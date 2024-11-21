@@ -12,6 +12,20 @@ import { SleepIcon } from "../../assets/sleep";
 import { useTripStore } from "../../store/tripStore";
 import { Box } from "@mui/material";
 
+const fetchLocations = async (query) => {
+  const API_KEY = import.meta.env.VITE_API_KEY;
+  const endpoint = `https://api.geoapify.com/v1/geocode/autocomplete?text=${query}&apiKey=${API_KEY}`;
+
+  try {
+    const response = await fetch(endpoint);
+    const data = await response.json();
+    return data.features.map((feature) => feature.properties.formatted);
+  } catch (error) {
+    console.error("Error fetching locations:", error);
+    return [];
+  }
+};
+
 const dropdownItems = [
   {
     icon: <LocationIcon />,
@@ -50,6 +64,8 @@ export const Trip = () => {
     | undefined
   >();
 
+  const [locations, setLocations] = React.useState([]);
+
   const selectStartPoint = (startPoint: string) => {
     setStartPoint(startPoint);
   };
@@ -61,6 +77,19 @@ export const Trip = () => {
   const selectType = (item: { icon: React.ReactNode; label: string }) => {
     setSelectedType(item);
   };
+
+  const handleSearch = async (query) => {
+    if (query) {
+      const result = await fetchLocations(query);
+      setLocations(result);
+    } else {
+      setLocations([]);
+    }
+  };
+
+  useEffect(() => {
+    console.log(locations);
+  }, [locations]);
 
   useEffect(() => {
     if (tripTitle) {
@@ -120,12 +149,11 @@ export const Trip = () => {
       >
         <SearchDropdown
           onSelect={selectStartPoint}
-          items={[
-            "BCN airport montreal canada",
-            "Airport yul france",
-            "airport yul montreal trudeau",
-            "etc...",
-          ]}
+          placeholder={
+            points.length === 0 ? "Enter a start point" : "Add another point"
+          }
+          onSearch={handleSearch}
+          items={locations}
         />
         <CustomModal open={startPoint.length > 0} onClose={clearStartPoint}>
           <Box
