@@ -3,7 +3,10 @@ import { Box } from "@mui/material";
 import Burger from "../../components/burger/burger";
 import { Logo } from "../../assets/logo";
 
-const HomeLayout: FC<{ children: ReactNode }> = ({ children }) => {
+const HomeLayout: FC<{ children: ReactNode; header?: ReactNode }> = ({
+  children,
+  header,
+}) => {
   return (
     <Box
       sx={{
@@ -18,10 +21,10 @@ const HomeLayout: FC<{ children: ReactNode }> = ({ children }) => {
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
-          padding: "16px",
+          padding: "30px 16px 16px 16px",
         }}
       >
-        <Logo />
+        {header ?? <Logo />}
       </Box>
 
       <Box

@@ -23,11 +23,9 @@ const Burger = () => {
         onClick={toggleDrawer(true)}
         sx={{
           position: "absolute",
-          top: 16,
-          left: 16,
           backgroundColor: "#fff",
           boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.1)",
-          padding: "29px 26px",
+          padding: "25px 22px",
           borderRadius: "18px",
         }}
       >
