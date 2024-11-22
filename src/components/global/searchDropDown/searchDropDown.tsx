@@ -35,6 +35,7 @@ export const SearchDropdown: React.FC<SearchDropdownProps> = ({
 
   const handleClose = () => {
     setIsOpen(false);
+    setSearch("");
   };
 
   const handleOpen = () => {

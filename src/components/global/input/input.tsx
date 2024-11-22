@@ -20,6 +20,14 @@ export const Input: FC<InputProps> = ({ value, onChange, label }) => {
           "& fieldset": {
             borderRadius: "12px",
           },
+          "& input": {
+            fontSize: "24px",
+            fontWeight: 600,
+          },
+        },
+        "& .MuiInputLabel-root": {
+          fontSize: "24px",
+          fontWeight: 600,
         },
       }}
     />

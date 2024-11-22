@@ -28,11 +28,24 @@ export const Home = () => {
   return (
     <Box>
       <CustomModal open={showCreateTipModal} onClose={toggleModal}>
-        <CustomTypography sx={{ textAlign: "center", marginBottom: "10px" }}>
+        <CustomTypography
+          sx={{
+            textAlign: "center",
+            marginBottom: "10px",
+            fontSize: "24px",
+            fontWeight: 700,
+          }}
+        >
           Title your Trip
         </CustomTypography>
         <Input value={tripTitle} onChange={handleTripTitleChange} />
-        <Box sx={{ marginTop: "10px" }}>
+        <Box
+          sx={{
+            paddingTop: "10px",
+            maxWidth: "80%",
+            margin: "0 auto",
+          }}
+        >
           <Button
             variant={"primary"}
             text={"Start planning"}

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { FC, useState } from "react";
 import {
   Box,
   IconButton,
@@ -10,7 +10,7 @@ import {
 import MenuIcon from "@mui/icons-material/Menu";
 import { Link } from "react-router-dom";
 
-const Burger = () => {
+const Burger: FC<{ border?: boolean }> = ({ border = true }) => {
   const [open, setOpen] = useState(false);
 
   const toggleDrawer = (state: boolean) => () => {
@@ -23,9 +23,9 @@ const Burger = () => {
         onClick={toggleDrawer(true)}
         sx={{
           position: "absolute",
-          backgroundColor: "#fff",
-          boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.1)",
-          padding: "25px 22px",
+          backgroundColor: border ? "#fff" : "transparent",
+          boxShadow: border ? "0px 4px 8px rgba(0, 0, 0, 0.1)" : "none",
+          padding: border ? "25px 22px" : "37px",
           borderRadius: "18px",
         }}
       >

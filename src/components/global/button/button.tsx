@@ -23,15 +23,17 @@ export const Button: React.FC<ButtonProps> = ({
           onClick={onClick}
           variant="contained"
           sx={{
-            background: "linear-gradient(90deg, #FF6A00, #FF8C00)",
-            borderRadius: "24px",
+            background:
+              "radial-gradient(100% 100% at 0% 0%, #FF9345 0.01%, #FE7138 50%, #F25D21 100%)",
+            width: "100%",
+            borderRadius: "18px",
             color: "#FFFFFF",
             padding: "12px 32px",
-            fontSize: "clamp(14px, 2vw, 18px)",
+            fontSize: "clamp(18px, 2vw, 18px)",
             fontWeight: "bold",
             textTransform: "none",
             transition: "all 1s ease-in-out",
-            boxShadow: "0px 8px 16px rgba(255, 136, 0, 0.4)",
+            boxShadow: "none",
             ":hover": {
               backgroundColor: "#FFFFFF",
             },
@@ -45,17 +47,20 @@ export const Button: React.FC<ButtonProps> = ({
           onClick={onClick}
           sx={{
             color: "#FF8C00",
-            fontSize: "clamp(14px, 2vw, 18px)",
+            fontSize: "clamp(18px, 2vw, 18px)",
+            width: "100%",
             fontWeight: "bold",
             cursor: "pointer",
             textTransform: "none",
             padding: "12px 32px",
-            borderRadius: "24px",
+            borderRadius: "18px",
+            textAlign: "center",
+            boxShadow: "none",
             transition: "all 1s ease-in-out",
             ":hover": {
-              background: "linear-gradient(90deg, #FF6A00, #FF8C00)",
+              background:
+                "radial-gradient(100% 100% at 0% 0%, #FF9345 0.01%, #FE7138 50%, #F25D21 100%)",
               color: "#FFFFFF",
-              boxShadow: "0px 8px 16px rgba(255, 136, 0, 0.4)",
             },
             ...sx,
           }}

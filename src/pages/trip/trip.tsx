@@ -137,8 +137,22 @@ export const Trip = () => {
 
   return (
     <HomeLayout
+      burgerBorder={false}
       header={
-        <CustomTypography>{tripTitle || "Trip Planning"}</CustomTypography>
+        <CustomTypography
+          sx={{
+            fontWeight: 600,
+            fontSize: "20px",
+            lineHeight: "30px",
+            maxWidth: "40%",
+            margin: "0 auto",
+            whiteSpace: "normal",
+            wordWrap: "break-word",
+            textAlign: "center",
+          }}
+        >
+          {tripTitle || "Trip Planning"}
+        </CustomTypography>
       }
     >
       <Box

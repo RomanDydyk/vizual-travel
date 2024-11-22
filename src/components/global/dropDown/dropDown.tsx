@@ -9,6 +9,7 @@ import {
 } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 import DropDownItem from "../../dropDownItem/dropDownItem";
+import CustomTypography from "../typography/typography";
 
 interface DropdownProps {
   items: { icon: React.ReactNode; label: string }[];
@@ -51,7 +52,11 @@ export const Dropdown: React.FC<DropdownProps> = ({
           fontWeight: "bold",
         }}
       >
-        {selectedItem ? <DropDownItem item={selectedItem} /> : placeholder}
+        {selectedItem ? (
+          <DropDownItem item={selectedItem} sx={{ fontWeight: 700 }} />
+        ) : (
+          placeholder
+        )}
       </Typography>
       {isOpen && (
         <Fade in={isOpen}>
@@ -103,10 +108,18 @@ export const Dropdown: React.FC<DropdownProps> = ({
                       sx={{
                         display: "flex",
                         alignItems: "center",
+                        justifyContent: "center",
                       }}
                     >
                       {item.icon}
-                      <Typography sx={{ ml: 2 }}>{item.label}</Typography>
+                      <CustomTypography
+                        sx={{
+                          ml: 2,
+                          fontWeight: 700,
+                        }}
+                      >
+                        {item.label}
+                      </CustomTypography>
                     </Box>
                   </ListItem>
                 ))
