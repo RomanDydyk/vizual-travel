@@ -77,7 +77,6 @@ export const TripOverview = () => {
               height: "60px",
               padding: "13px 8px",
               color: "white",
-              fontWeight: "bold",
               fontSize: "14px",
               width: "51px",
             }}
@@ -147,14 +146,14 @@ export const TripOverview = () => {
                   <Typography variant="body2" fontWeight={700} color="#FE7138">
                     10:00 AM
                   </Typography>
-                  <Typography variant="body2" color="gray">
+                  <Typography variant="body2" color="gray" ml={1.5}>
                     {index === 0 ? "Start Point" : "Next Point"}
                   </Typography>
                 </Box>
               </Box>
             </Box>
             <Button
-              sx={{ padding: "4px 6px " }}
+              sx={{ padding: "4px 6px ", fontSize: "16px" }}
               variant="primary"
               onClick={() => {
                 edit(point);
@@ -182,7 +181,7 @@ export const TripOverview = () => {
         <Typography
           variant="body1"
           fontWeight="bold"
-          ml={3}
+          ml={5}
           color="black"
           onClick={handleAddPoint}
         >

@@ -22,7 +22,7 @@ const HomeLayout: FC<{
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
-          padding: "24px 16px 16px 16px",
+          padding: "30px 16px 16px 16px",
         }}
       >
         {header ?? <Logo />}

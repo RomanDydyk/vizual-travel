@@ -1,4 +1,4 @@
-export const messageIcon = () => {
+export const MessageIcon = () => {
   return (
     <svg
       width="59"

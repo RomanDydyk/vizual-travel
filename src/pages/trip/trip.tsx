@@ -204,7 +204,7 @@ export const Trip = () => {
               }}
             >
               <Dropdown
-                placeholder="Select a type of point"
+                placeholder="Select a type"
                 items={dropdownItems}
                 onSelect={selectType}
                 selectedItem={selectedType}

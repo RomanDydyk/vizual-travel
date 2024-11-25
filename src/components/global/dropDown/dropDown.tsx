@@ -1,15 +1,7 @@
 import React, { useState } from "react";
-import {
-  Box,
-  Typography,
-  IconButton,
-  Fade,
-  List,
-  ListItem,
-} from "@mui/material";
-import CloseIcon from "@mui/icons-material/Close";
-import DropDownItem from "../../dropDownItem/dropDownItem";
-import CustomTypography from "../typography/typography";
+import { Box, Typography, Fade, List, ListItem } from "@mui/material";
+import { ArrowIcon } from "../../../assets/arrow";
+import { MessageIcon } from "../../../assets/message";
 
 interface DropdownProps {
   items: { icon: React.ReactNode; label: string }[];
@@ -26,56 +18,95 @@ export const Dropdown: React.FC<DropdownProps> = ({
 }) => {
   const [isOpen, setIsOpen] = useState(false);
 
-  const handleClose = () => {
-    setIsOpen(false);
-  };
-
-  const handleOpen = () => {
-    setIsOpen(true);
+  const handleToggle = () => {
+    setIsOpen(!isOpen);
   };
 
   const handleSelect = (item: { icon: React.ReactNode; label: string }) => {
     onSelect(item);
     setIsOpen(false);
   };
-  console.log(selectedItem);
+
   return (
-    <Box sx={{ position: "relative", width: "300px" }}>
-      <Typography
-        onClick={handleOpen}
+    <Box sx={{ position: "relative", width: "250px" }}>
+      <Box
+        onClick={handleToggle}
         sx={{
-          padding: "10px 15px",
-          backgroundColor: "#F8F8F8",
-          borderRadius: "8px",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          backgroundColor: "#fff",
+          borderRadius: "24px",
           cursor: "pointer",
           textAlign: "center",
-          fontWeight: "bold",
+          padding: "10px",
+          border: "1px solid #E0E0E0",
+          backdropFilter: isOpen ? "blur(50px)" : "none",
+          boxShadow: isOpen
+            ? "0px 4px 4px 0px #0000000D, 0px 1px 0px 0px #0000000D, 0px 20px 50px 0px #FFFFFF26 inset"
+            : "none",
         }}
       >
         {selectedItem ? (
-          <DropDownItem item={selectedItem} sx={{ fontWeight: 700 }} />
+          <Box>
+            <Typography
+              sx={{
+                fontSize: "14px",
+                color: "#84858E",
+                marginBottom: "5px",
+              }}
+            >
+              {selectedItem.label}
+            </Typography>
+            <Box
+              sx={{
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+              }}
+            >
+              {selectedItem.icon}
+            </Box>
+          </Box>
         ) : (
-          placeholder
+          <Box>
+            <Typography
+              sx={{
+                fontSize: "14px",
+                color: "#84858E",
+                marginBottom: "5px",
+              }}
+            >
+              {placeholder}
+            </Typography>
+            <MessageIcon />
+          </Box>
         )}
-      </Typography>
+        <Box
+          sx={{
+            marginLeft: "8px",
+            transform: isOpen ? "rotate(180deg)" : "rotate(0deg)",
+            transition: "transform 0.3s ease",
+          }}
+        >
+          <ArrowIcon />
+        </Box>
+      </Box>
       {isOpen && (
         <Fade in={isOpen}>
           <Box
             sx={{
-              bgcolor: "#FFFFFF",
+              position: "absolute",
+              top: "calc(100% + 8px)",
+              left: 0,
+              width: "100%",
+              backgroundColor: "#FFFFFF",
               borderRadius: "12px",
               boxShadow: "0px 4px 12px rgba(0, 0, 0, 0.1)",
               overflow: "hidden",
-              mt: 2,
+              zIndex: 10,
             }}
           >
-            <IconButton
-              onClick={handleClose}
-              sx={{ position: "absolute", right: 8, top: 8 }}
-            >
-              <CloseIcon />
-            </IconButton>
-
             <List
               sx={{
                 maxHeight: "200px",
@@ -108,18 +139,17 @@ export const Dropdown: React.FC<DropdownProps> = ({
                       sx={{
                         display: "flex",
                         alignItems: "center",
-                        justifyContent: "center",
                       }}
                     >
                       {item.icon}
-                      <CustomTypography
+                      <Typography
                         sx={{
                           ml: 2,
                           fontWeight: 700,
                         }}
                       >
                         {item.label}
-                      </CustomTypography>
+                      </Typography>
                     </Box>
                   </ListItem>
                 ))
