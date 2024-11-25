@@ -89,8 +89,21 @@ export const SearchDropdown: React.FC<SearchDropdownProps> = ({
             </InputAdornment>
           ),
           sx: {
+            boxShadow: "0px 1px 4px 0px #00000040",
             borderRadius: "8px",
+            fontWeight: 700,
+            color: "#979797",
             bgcolor: "#F8F8F8",
+            "& .MuiOutlinedInput-notchedOutline": {
+              borderColor: "#D1D1D1",
+            },
+            "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
+              borderColor: "#D1D1D1",
+              borderWidth: "2px",
+            },
+            "& .MuiInputBase-input::placeholder": {
+              fontWeight: 700,
+            },
           },
         }}
       />

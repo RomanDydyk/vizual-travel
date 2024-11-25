@@ -74,12 +74,12 @@ export const TripOverview = () => {
             sx={{
               backgroundColor: "#FE7138",
               borderRadius: "8px",
-              width: "60px",
               height: "60px",
               padding: "13px 8px",
               color: "white",
               fontWeight: "bold",
               fontSize: "14px",
+              width: "51px",
             }}
           >
             Day
@@ -94,21 +94,30 @@ export const TripOverview = () => {
               1
             </CustomTypography>
           </Box>
-          <MuiButton
-            onClick={() => {}}
-            variant="contained"
+          <Box
             sx={{
-              backgroundColor: "#FF91471A",
-              borderRadius: "8px",
-              width: "60px",
+              width: "51px",
               height: "60px",
-              color: "#FE7138",
-              fontSize: "24px",
-              boxShadow: "none",
             }}
           >
-            +
-          </MuiButton>
+            <MuiButton
+              onClick={() => {}}
+              variant="contained"
+              sx={{
+                backgroundColor: "#FF91471A",
+                borderRadius: "8px",
+                width: "100%",
+                height: "100%",
+                padding: 0,
+                minWidth: 0,
+                color: "#FE7138",
+                fontSize: "24px",
+                boxShadow: "none",
+              }}
+            >
+              +
+            </MuiButton>
+          </Box>
         </Box>
       </Box>
 
@@ -164,10 +173,10 @@ export const TripOverview = () => {
       >
         <AddIcon
           sx={{
-            color: "#FF6F61",
+            color: "#FE7138",
             fontSize: "28px",
-            stroke: "#FF6F61",
-            strokeWidth: "3px",
+            stroke: "#FE7138",
+            strokeWidth: "4px",
           }}
         />
         <Typography

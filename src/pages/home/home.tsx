@@ -47,8 +47,9 @@ export const Home = () => {
           }}
         >
           <Button
+            sx={{ padding: "20px 21px" }}
             variant={"primary"}
-            text={"Start planning"}
+            text={"Start Planning"}
             onClick={handleStartPlanning}
           />
         </Box>
@@ -64,7 +65,7 @@ export const Home = () => {
       >
         Hi David Laufeyson !
       </CustomTypography>
-      <Box sx={{ display: "flex", flexDirection: "column", gap: "10px" }}>
+      <Box sx={{ display: "flex", flexDirection: "column", gap: "16px" }}>
         <Button variant={"primary"} text={"Generate a New Trip"} />
         <Button
           variant={"secondary"}

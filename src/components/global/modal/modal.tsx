@@ -34,9 +34,16 @@ export const CustomModal: React.FC<ModalProps> = ({
             width: "auto",
             maxHeight: "90vh",
             overflowY: "auto",
-            bgcolor: "background.paper",
+            background: "linear-gradient(180deg, #EEF3F7 0%, #FFFFFF 100%)",
+            boxShadow: `
+            0px 1.3px 2.21px 0px #07081705,
+            0px 3.13px 5.32px 0px #07081707,
+            0px 5.89px 10.02px 0px #07081709,
+            0px 10.5px 17.87px 0px #0708170B,
+            0px 19.64px 33.42px 0px #0708170D,
+            0px 47px 80px 0px #07081712
+          `,
             borderRadius: "16px",
-            boxShadow: 24,
             p: 4,
             ...sx,
           }}

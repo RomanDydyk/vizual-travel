@@ -27,6 +27,7 @@ const Burger: FC<{ border?: boolean }> = ({ border = true }) => {
           boxShadow: border ? "0px 4px 8px rgba(0, 0, 0, 0.1)" : "none",
           padding: border ? "25px 22px" : "37px",
           borderRadius: "18px",
+          margin: border ? "4px 16px" : "0",
         }}
       >
         <MenuIcon sx={{ color: "#0E121B", fontSize: 28 }} />

@@ -187,7 +187,7 @@ export const Trip = () => {
               sx={{
                 textAlign: "center",
                 fontWeight: "700",
-                margin: "20px 0px",
+                margin: "40px 0px",
               }}
             >
               Address : Romeo Vachon, Dorval, QC
@@ -198,7 +198,7 @@ export const Trip = () => {
 
             <Box
               sx={{
-                margin: "10px 0px",
+                margin: "30px 0px",
                 display: "flex",
                 justifyContent: "center",
               }}
@@ -211,16 +211,18 @@ export const Trip = () => {
               />
             </Box>
 
-            <Button
-              variant="primary"
-              text="Add point"
-              onClick={handleAddPoint}
-            />
-            <Button
-              variant="secondary"
-              text="Go Back"
-              onClick={clearStartPoint}
-            />
+            <Box sx={{ display: "flex", flexDirection: "column", gap: "18px" }}>
+              <Button
+                variant="primary"
+                text="Add point"
+                onClick={handleAddPoint}
+              />
+              <Button
+                variant="secondary"
+                text="Go Back"
+                onClick={clearStartPoint}
+              />
+            </Box>
           </Box>
         </CustomModal>
       </Box>
